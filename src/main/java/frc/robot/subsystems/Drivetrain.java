@@ -1,21 +1,20 @@
+
 package frc.robot.subsystems;
 
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class Drivetrain extends SubsystemBase {
-
-    // Placeholder CAN IDs
     private final SparkMax leftMotor =
-            new SparkMax(1, MotorType.kBrushed);
+            new SparkMax(Constants.Drive.LEFT_MOTOR_CAN_ID, MotorType.kBrushed);
 
     private final SparkMax rightMotor =
-            new SparkMax(2, MotorType.kBrushed);
+            new SparkMax(Constants.Drive.RIGHT_MOTOR_CAN_ID, MotorType.kBrushed);
 
     public Drivetrain() {
-        rightMotor.setInverted(true);
+        rightMotor.setInverted(Constants.Drive.RIGHT_MOTOR_INVERTED);
     }
 
     public void drive(double leftSpeed, double rightSpeed) {
@@ -24,6 +23,6 @@ public class Drivetrain extends SubsystemBase {
     }
 
     public void stop() {
-        drive(0, 0);
+        drive(0.0, 0.0);
     }
 }
